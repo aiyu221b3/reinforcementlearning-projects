@@ -71,7 +71,7 @@ Chance deals two distinct cards from \( \{J,Q,K\} \), so there are six equiproba
 If both players check, the higher card wins \(+1\) for player 0. A fold pays \(+1\) to the bettor. A called bet reaches showdown for \(\pm 2\). Player 1 always receives the negative of player 0's payoff, so this is a two-player zero-sum extensive-form game with perfect recall.
 
 There are six binary information sets per player:
-
+$$
 \[
 \begin{aligned}
 \mathcal I_0 &= \{J|\varnothing,Q|\varnothing,K|\varnothing,
@@ -79,7 +79,7 @@ There are six binary information sets per player:
 \mathcal I_1 &= \{J|P,Q|P,K|P,J|B,Q|B,K|B\}.
 \end{aligned}
 \]
-
+$$
 The first three for player 0 mean “my card at the root.” The latter three mean “my card after I checked and faced a bet.” Same idea for player 1, with \(P\) and \(B\) telling them what they observed. The opponent's card never appears in an information-set label. That missing variable is the whole point.
 
 ## ground truth before algorithms
