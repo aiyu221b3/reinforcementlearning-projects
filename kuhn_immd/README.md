@@ -61,51 +61,51 @@ The default run uses a deterministic full-tree / full-matrix calculation. It sho
 
 ## the game: six little deals and a surprising amount of strategy
 
-Chance deals two distinct cards from \( \{J,Q,K\} \), so there are six equiprobable ordered deals. Player 0 sees \(c_0\), acts first, and player 1 sees only \(c_1\).
+Chance deals two distinct cards from $ \{J,Q,K\} $, so there are six equiprobable ordered deals. Player 0 sees $c_0$, acts first, and player 1 sees only $c_1$.
 
-- \(P\): pass / check
-- \(B\): bet
-- \(F\): fold
-- \(C\): call
+- $P$: pass / check
+- $B$: bet
+- $F$: fold
+- $C$: call
 
-If both players check, the higher card wins \(+1\) for player 0. A fold pays \(+1\) to the bettor. A called bet reaches showdown for \(\pm 2\). Player 1 always receives the negative of player 0's payoff, so this is a two-player zero-sum extensive-form game with perfect recall.
+If both players check, the higher card wins $+1$ for player 0. A fold pays $+1$ to the bettor. A called bet reaches showdown for $\pm 2$. Player 1 always receives the negative of player 0's payoff, so this is a two-player zero-sum extensive-form game with perfect recall.
 
 There are six binary information sets per player:
+
 $$
-\[
 \begin{aligned}
 \mathcal I_0 &= \{J|\varnothing,Q|\varnothing,K|\varnothing,
                    J|PB,Q|PB,K|PB\},\\
 \mathcal I_1 &= \{J|P,Q|P,K|P,J|B,Q|B,K|B\}.
 \end{aligned}
-\]
 $$
-The first three for player 0 mean “my card at the root.” The latter three mean “my card after I checked and faced a bet.” Same idea for player 1, with \(P\) and \(B\) telling them what they observed. The opponent's card never appears in an information-set label. That missing variable is the whole point.
+
+The first three for player 0 mean “my card at the root.” The latter three mean “my card after I checked and faced a bet.” Same idea for player 1, with $P$ and $B$ telling them what they observed. The opponent's card never appears in an information-set label. That missing variable is the whole point.
 
 ## ground truth before algorithms
 
 Kuhn poker is friendly because it has a known value and a continuum of Nash equilibria. From player 0's view,
 
-\[
+$$
 v^\star=-\frac{1}{18}.
-\]
+$$
 
-A convenient equilibrium family is indexed by \(\alpha\in[0,\frac13]\). The table records the probability of action 1, where action 1 is bet at a root/check node and call at a response node.
+A convenient equilibrium family is indexed by $\alpha\in[0,\frac13]$. The table records the probability of action 1, where action 1 is bet at a root/check node and call at a response node.
 
 | player / information set | action-1 probability |
 | --- | --- |
-| p0: \(J|\varnothing\) | \(\alpha\) |
-| p0: \(Q|\varnothing\) | \(0\) |
-| p0: \(K|\varnothing\) | \(3\alpha\) |
-| p0: \(J|PB\) | \(0\) |
-| p0: \(Q|PB\) | \(\frac13+\alpha\) |
-| p0: \(K|PB\) | \(1\) |
-| p1: \(J|P\) | \(\frac13\) |
-| p1: \(Q|P\) | \(0\) |
-| p1: \(K|P\) | \(1\) |
-| p1: \(J|B\) | \(0\) |
-| p1: \(Q|B\) | \(\frac13\) |
-| p1: \(K|B\) | \(1\) |
+| p0: $J\mid \varnothing$ | $\alpha$ |
+| p0: $Q\mid \varnothing$ | $0$ |
+| p0: $K\mid \varnothing$ | $3\alpha$ |
+| p0: $J\mid PB$ | $0$ |
+| p0: $Q\mid PB$ | $\frac13+\alpha$ |
+| p0: $K\mid PB$ | $1$ |
+| p1: $J\mid P$ | $\frac13$ |
+| p1: $Q\mid P$ | $0$ |
+| p1: $K\mid P$ | $1$ |
+| p1: $J\mid B$ | $0$ |
+| p1: $Q\mid B$ | $\frac13$ |
+| p1: $K\mid B$ | $1$ |
 
 This matters for more than a cute unit test. The equilibrium is not a single policy. Any claim that an optimizer “discovers the one true policy” is already confused; the method's geometry, reference policy, and implementation choices decide where it lands along or near that set.
 
@@ -115,54 +115,54 @@ The code verifies four points of this family, including both endpoints, against 
 
 A deterministic policy selects one binary action at each of six information sets. Therefore each player has
 
-\[
+$$
 2^6=64
-\]
+$$
 
 pure strategies. Enumerating them produces an exact payoff matrix
 
-\[
+$$
 A\in\mathbb R^{64\times64},\qquad
 A_{ij}=\mathbb E[u_0\mid s_0=i,s_1=j].
-\]
+$$
 
-Let \(x,y\in\Delta^{63}\) be distributions over the 64 pure strategies. The row player maximizes and the column player minimizes
+Let $x,y\in\Delta^{63}$ be distributions over the 64 pure strategies. The row player maximizes and the column player minimizes
 
-\[
+$$
 u(x,y)=x^\top A y.
-\]
+$$
 
 This is intentionally not a scalable representation. In a large extensive-form game it is exponentially bad, and one should use sequence form with dilated entropy, or a sampled policy-gradient method. But for Kuhn poker, normal form buys something genuinely valuable: every update, best response, QRE residual, and NashConv is exact and short enough to audit without thy brain falling into a recursive abyss.
 
-The script also maps a normal-form mixture back to a behavioral policy. At player 0's later \(PB\) information sets, it conditions on that pure policy having checked at the matching root information set. That conditioning is necessary: it preserves the realization-equivalent policy rather than pretending that a correlated normal-form mixture is automatically independent everywhere.
+The script also maps a normal-form mixture back to a behavioral policy. At player 0's later $PB$ information sets, it conditions on that pure policy having checked at the matching root information set. That conditioning is necessary: it preserves the realization-equivalent policy rather than pretending that a correlated normal-form mixture is automatically independent everywhere.
 
 ## exploitability: the metric that does not let us lie politely
 
 For a zero-sum matrix game, the exact NashConv is
 
-\[
+$$
 \operatorname{NashConv}(x,y)
 =
 \max_i (Ay)_i-\min_j(x^\top A)_j.
-\]
+$$
 
-The first term is player 0's best-response value against \(y\); the second is the value player 1 can force against \(x\). It is non-negative and becomes zero at a Nash equilibrium. There are no learned best-response networks, no rollouts, and no “looks approximately blue enough” metric in this file.
+The first term is player 0's best-response value against $y$; the second is the value player 1 can force against $x$. It is non-negative and becomes zero at a Nash equilibrium. There are no learned best-response networks, no rollouts, and no “looks approximately blue enough” metric in this file.
 
 For behavioral policies, the code first creates their realization-equivalent independent normal-form distributions, then applies this same exact matrix calculation. As a second check, four fixed-seed random behavioral policy pairs are evaluated two ways:
 
-\[
+$$
 x^\top A y
 \quad\text{and}\quad
 \sum_{c_0\ne c_1}\frac16\,u_0(\sigma_0,\sigma_1;c_0,c_1).
-\]
+$$
 
 They must agree to numerical precision.
 
 ## cfr+: useful foil, not the villain
 
-Counterfactual regret minimization decomposes a global game into local regret minimizers. At each information set \(I\), CFR+ maintains non-negative cumulative regrets
+Counterfactual regret minimization decomposes a global game into local regret minimizers. At each information set $I$, CFR+ maintains non-negative cumulative regrets
 
-\[
+$$
 R_t^+(I,a)
 =
 \max\left\{0,\,
@@ -172,18 +172,18 @@ v_i^{\sigma_t}(I,a)
 -
 v_i^{\sigma_t}(I)
 \right\}.
-\]
+$$
 
 The next local policy is regret matching on these positive values:
 
-\[
+$$
 \sigma_{t+1}(a\mid I)
 =
 \begin{cases}
 \dfrac{R_t^+(I,a)}{\sum_b R_t^+(I,b)}, & \sum_b R_t^+(I,b)>0,\\[8pt]
 \dfrac1{|A(I)|}, & \text{otherwise.}
 \end{cases}
-\]
+$$
 
 The implementation traverses all six chance deals, holds the policy fixed through an iteration, accumulates counterfactual updates, clips after the sweep, and forms a delayed linearly weighted average policy. The chance factor is included in every counterfactual update. The average policy uses the acting player's reach probability; common chance factors cancel only after they have been applied consistently.
 
@@ -191,29 +191,29 @@ The important distinction: ordinary CFR theory is an **average-iterate** result.
 
 ## fixed-magnet mmd: a QRE solver
 
-Let \(\rho_0,\rho_1\) be strictly positive reference distributions — the magnets — and let \(\tau>0\). Define the regularized saddle objective
+Let $\rho_0,\rho_1$ be strictly positive reference distributions — the magnets — and let $\tau>0$. Define the regularized saddle objective
 
-\[
+$$
 L_\tau(x,y;\rho)
 =
 x^\top A y
 -\tau D_{\mathrm{KL}}(x\Vert\rho_0)
 +\tau D_{\mathrm{KL}}(y\Vert\rho_1).
-\]
+$$
 
 The row player maximizes it and the column player minimizes it. The KL divergence is
 
-\[
+$$
 D_{\mathrm{KL}}(p\Vert q)
 =
 \sum_i p_i\log\frac{p_i}{q_i}.
-\]
+$$
 
-The signs are not decorative. The row player is penalized for leaving its magnet; the column player, because it minimizes, is also penalized for leaving its magnet. With a fixed positive \(\tau\), the game is strongly regularized and its QRE is unique in the interior.
+The signs are not decorative. The row player is penalized for leaving its magnet; the column player, because it minimizes, is also penalized for leaving its magnet. With a fixed positive $\tau$, the game is strongly regularized and its QRE is unique in the interior.
 
 Using negative entropy as the mirror map, the simultaneous KL-prox update in the script is
 
-\[
+$$
 x_{t+1}
 =
 \operatorname{softmax}
@@ -221,9 +221,9 @@ x_{t+1}
 \frac{\log x_t+\eta Ay_t+\eta\tau\log\rho_0}
 {1+\eta\tau}
 \right),
-\]
+$$
 
-\[
+$$
 y_{t+1}
 =
 \operatorname{softmax}
@@ -231,11 +231,11 @@ y_{t+1}
 \frac{\log y_t-\eta A^\top x_t+\eta\tau\log\rho_1}
 {1+\eta\tau}
 \right).
-\]
+$$
 
 Componentwise, the row update can be written as
 
-\[
+$$
 x_{t+1,i}
 \propto
 \left[
@@ -243,7 +243,7 @@ x_{t,i}\,
 \rho_{0,i}^{\eta\tau}\,
 \exp\!\left(\eta(Ay_t)_i\right)
 \right]^{\frac{1}{1+\eta\tau}},
-\]
+$$
 
 with the analogous negative-payoff expression for the column player. This is exactly what fixed_mmd does; there is no hidden reward shaping, no policy network, and no tempering schedule pretending to be a convergence proof.
 
@@ -251,32 +251,32 @@ with the analogous negative-payoff expression for the column player. This is exa
 
 A QRE is not generally a Nash equilibrium of the unregularized game. Its ordinary NashConv can therefore settle above zero by design. The middle panel plots the regularized saddle gap
 
-\[
+$$
 G_\tau(x,y;\rho)
 =
 \max_{x'}L_\tau(x',y;\rho)
 -
 \min_{y'}L_\tau(x,y';\rho)
 \ge 0,
-\]
+$$
 
 alongside ordinary NashConv specifically so they cannot be mistaken for the same objective.
 
-For this entropy-regularized matrix game, each best-response part of \(G_\tau\) has a closed form using log-sum-exp. That is why the code can measure it exactly rather than estimate it with an optimizer. Hark: a small residual only means the fixed-magnet QRE has been solved well. It does **not** mean a Nash equilibrium has appeared by divine intervention.
+For this entropy-regularized matrix game, each best-response part of $G_\tau$ has a closed form using log-sum-exp. That is why the code can measure it exactly rather than estimate it with an optimizer. Hark: a small residual only means the fixed-magnet QRE has been solved well. It does **not** mean a Nash equilibrium has appeared by divine intervention.
 
 ## immd: keep the regularizer, move the magnet
 
-Annealing \(\tau\) toward zero changes the problem every step. It can be a useful continuation heuristic, but it does not inherit a fixed-\(\tau\) convergence theorem just because the curve is aesthetically pleasing.
+Annealing $\tau$ toward zero changes the problem every step. It can be a useful continuation heuristic, but it does not inherit a fixed-$\tau$ convergence theorem just because the curve is aesthetically pleasing.
 
-IMMD takes a cleaner route. At outer round \(r\), it approximately solves the fixed-magnet inner game, checks its residual, then copies that solution into the next magnet:
+IMMD takes a cleaner route. At outer round $r$, it approximately solves the fixed-magnet inner game, checks its residual, then copies that solution into the next magnet:
 
-\[
+$$
 (x_r,y_r)
 \approx
 \operatorname*{saddle}_{x,y} L_\tau(x,y;\rho^r),
 \qquad
 \rho^{r+1}=(x_r,y_r).
-\]
+$$
 
 The regularization strength stays fixed. In the theory-faithful idealization, the inner problem is solved exactly. This implementation uses 2,800 full-information MMD steps per round and reports the final inner regularized gap, so the finite-inner approximation is visible rather than magically hand-waved away.
 
@@ -304,8 +304,8 @@ This is not an information projection plot. Normal-form entropy, behavioral entr
 
 Running the script executes these checks before it writes a figure:
 
-- all \(64\times64\) pure-policy payoffs use the six legal ordered deals and correct terminal stakes;
-- four known analytical equilibria have value \(-1/18\) and machine-zero NashConv;
+- all $64\times64$ pure-policy payoffs use the six legal ordered deals and correct terminal stakes;
+- four known analytical equilibria have value $-1/18$ and machine-zero NashConv;
 - normal-form evaluation matches direct behavioral-tree evaluation on four random policy pairs;
 - MMD distributions remain normalized and all monitored gaps remain finite.
 - the default render configuration is gated by (G_\tau<10^{-5}), a final inner residual below (10^{-8}), and IMMD NashConv below (10^{-3}).
