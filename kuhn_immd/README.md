@@ -2,8 +2,6 @@
 
 a two-player game can be tiny enough to fit in one file and still punish sloppy language. kuhn poker has three cards, two actions at a time, and exactly enough hidden information to make “my policy seems stable” a dangerously vague sentence.
 
-this is the first mini i would add before attempting a shiny DeepNash-sized reproduction. it is an exact, visual lab for three different stories that are far too often blended together:
-
 1. CFR+ reduces regret; its averaged policy is the object with the classical equilibrium guarantee.
 2. Fixed-magnet magnetic mirror descent (MMD) converges to a **regularized** equilibrium, a quantal-response equilibrium (QRE), so its ordinary exploitability is intentionally not zero.
 3. Iterative MMD (IMMD) keeps that robust inner problem but refines the reference policy between fully solved rounds. This is the small, tabular ancestor of the current NashPG line of work.
