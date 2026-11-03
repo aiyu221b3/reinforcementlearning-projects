@@ -23,7 +23,7 @@ $$
 ---
 
 ### 2. Quantal Response Equilibrium (QRE) Homotopy & Logit Tracing
-![fig_2](images/homotropy_logit_trac.png)
+![fig_2](images/homotopy_logit_trac.png)
 
 Traces the smooth Quantal Response Equilibrium continuum from the high-entropy uniform centroid ($\tau \to \infty$) down to the unique **Limiting Logit Equilibrium** ($\tau \to 0^+$) on the 2-simplex via damped Newton-Raphson predictor-corrector continuation. Verifies the theoretical exploitability scaling bound $\text{NashConv}(\pi^*(\tau)) = \mathcal{O}(\tau \ln |\mathcal{A}|)$ along the entire logit branch.
 
