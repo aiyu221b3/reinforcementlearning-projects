@@ -55,8 +55,6 @@ $$
 
 ---
 
----
-
 ### 5. Partially Observed Artifact Search & Self-Play Q-Learning (`marl_search_game.py`)
 
 ![fig_5](images/marl_search_game_analysis.png)
