@@ -61,7 +61,7 @@ The default run uses a deterministic full-tree / full-matrix calculation. It sho
 
 ## the game: six little deals and a surprising amount of strategy
 
-Chance deals two distinct cards from $ \{J,Q,K\} $ , so there are six equiprobable ordered deals. Player 0 sees $c_0$, acts first, and player 1 sees only $c_1$.
+Chance deals two distinct cards from ${J,Q,K}$ , so there are six equiprobable ordered deals. Player 0 sees $c_0$, acts first, and player 1 sees only $c_1$.
 
 - $P$: pass / check
 - $B$: bet
