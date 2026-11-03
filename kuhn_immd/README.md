@@ -61,7 +61,7 @@ The default run uses a deterministic full-tree / full-matrix calculation. It sho
 
 ## the game: six little deals and a surprising amount of strategy
 
-Chance deals two distinct cards from $ \lbrace J,Q,K \rbrace $, so there are six equiprobable ordered deals. Player 0 sees $c_0$, acts first, and player 1 sees only $c_1$.
+Chance deals two distinct cards from $ \{J,Q,K\} $ , so there are six equiprobable ordered deals. Player 0 sees $c_0$, acts first, and player 1 sees only $c_1$.
 
 - $P$: pass / check
 - $B$: bet
@@ -266,7 +266,7 @@ For this entropy-regularized matrix game, each best-response part of $G_\tau$ ha
 
 ## immd: keep the regularizer, move the magnet
 
-Annealing $\tau$ toward zero changes the problem every step. It can be a useful continuation heuristic, but it does not inherit a fixed- $\tau$ convergence theorem just because the curve is aesthetically pleasing.
+Annealing $\tau$ toward zero changes the problem every step. It can be a useful continuation heuristic, but it does not inherit a fixed - $\tau$ convergence theorem just because the curve is aesthetically pleasing.
 
 IMMD takes a cleaner route. At outer round $r$, it approximately solves the fixed-magnet inner game, checks its residual, then copies that solution into the next magnet:
 
