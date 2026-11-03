@@ -17,7 +17,7 @@ It’s a work in progress, and it comes in two forms:
 Converts an imperfect-information extensive-form game into a continuous-state perfect-information game over the **Public Belief State (PBS)** simplex. Conditioning subgame solving on public posterior reach probabilities $\beta(c_i \mid h_{\text{pub}})$ maps out the exact piecewise-linear convex counterfactual value surface, verifying the indifference kink at $\beta^\star(\text{J} \mid \text{bet}) = \frac{1}{4}$ and the exact minimax root value $v^\star = -\frac{1}{18}$.
 
 $$
-\pi_{i}^{\star}(a \mid \tau) = \frac{\exp\left(Q_{i}^{\pi^{\star}}(a) / \tau\right)}{\sum_{a' \in \mathcal{A}_{i}} \exp\left(Q_{i}^{\pi^{\star}}(a') / \tau\right)}
+V_{i}(c_{i} \mid \beta_{\text{pub}}) = \sum_{c_{-i}} P(c_{-i} \mid c_{i}, \beta_{\text{pub}}) \, u_{i}\left(\pi_{\text{sub}}^{\star}(\beta_{\text{pub}}); c_{i}, c_{-i}\right)
 $$
 
 ---
@@ -59,7 +59,7 @@ $$
 
 ![fig_5](images/marl_search_game_analysis.png)
 
-Trains a two-agent pursuit–evasion search game in a voxel-style obstructed arena. The **artifact runner** learns to recover the beacon while the partially informed **signal hunter** learns to intercept using only its position and the runner’s last observation inside a local sensing radius. The single dark-mode phase portrait combines self-play terminal frequencies, greedy-policy occupancy heatmaps, and early-versus-late policy compression, while verifying that recovery, interception, and timeout probabilities sum to $100\%$ in every reporting window.
+Trains a two-agent pursuit–evasion search game in a voxel-style obstructed arena. The **artifact runner** learns to recover the beacon while the partially informed **signal hunter** learns to intercept using only its position and the runner’s last observation inside a local sensing radius. The single dark-mode phase portrait combines self-play terminal frequencies, greedy-policy occupancy heatmaps, and early-versus-late policy compression, while verifying that recovery, interception, and timeout probabilities sum to $`100\%`$ in every reporting window.
 
 $$
 Q_i(o_t^i, a_t^i)
