@@ -1,4 +1,4 @@
-# ml-rl-minis
+# reinforcementlearning-projects
 
 This repository is currently under progress: a lab of from-scratch reinforcement learning and game-theoretic primitives. Everything here is built around exact mechanism verification, analytical invariant checks, and dark-mode phase portraits.
 
