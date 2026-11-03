@@ -4,8 +4,8 @@ This repo is my workbench for reinforcement learning and game theory, with every
 
 It’s a work in progress, and it comes in two forms:
 
-1. Tutorials: multi-file deep dives, each in its own folder.
-2. Single-file projects: self-contained scripts in the root. Each one takes a single idea, rebuilds it from first principles, and then checks that it actually holds.
+1. Tutorials: multi-file deep dives, each in its own folder. Open the folders for details.
+2. Single-file projects: self-contained scripts in the root. Each one takes a single idea, rebuilds it from first principles, and then checks that it actually holds. All the generated graphs lie in the gallery below.
 
 ---
 
