@@ -16,7 +16,7 @@ There are two main categories of projects:
 Converts an imperfect-information extensive-form game into a continuous-state perfect-information game over the **Public Belief State (PBS)** simplex. Conditioning subgame solving on public posterior reach probabilities $\beta(c_i \mid h_{\text{pub}})$ maps out the exact piecewise-linear convex counterfactual value surface, verifying the indifference kink at $\beta^\star(\text{J} \mid \text{bet}) = \frac{1}{4}$ and the exact minimax root value $v^\star = -\frac{1}{18}$.
 
 $$
-V_i(c_i \mid \beta_{\text{pub}}) = \sum_{c_{-i}} P(c_{-i} \mid c_i, \beta_{\text{pub}}) u_i(\pi_{\text{sub}}^*(\beta_{\text{pub}}); c_i, c_{-i})
+\pi_{i}^{\star}(a \mid \tau) = \frac{\exp\left(Q_{i}^{\pi^{\star}}(a) / \tau\right)}{\sum_{a' \in \mathcal{A}_{i}} \exp\left(Q_{i}^{\pi^{\star}}(a') / \tau\right)}
 $$
 
 ---
