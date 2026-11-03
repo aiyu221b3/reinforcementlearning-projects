@@ -49,5 +49,6 @@ $$
 Solves a 7-state finite-horizon stopping corridor across **Sondik's Exact POMDP $`\alpha`$-Vector Pruning** (piecewise-linear convex upper envelope over the belief simplex $`\Delta^{6}`$), a **Dynkin Zero-Sum Stopping Game**, and **Nilim & El Ghaoui's KL-Divergence Distributionally Robust Bellman Operator** via Lagrangian convex duality over $`D_{\text{KL}}(Q \,\|\, P_{s,a}) \le \kappa`$.
 
 $$
-V_{k}^{\text{rob}}(s) = \max_{a \in \mathcal{A}} \left\{ r(s, a) + \gamma \sup_{\tau \ge 0} \left[ -\tau \kappa - \tau \ln \sum_{s'} P(s' \mid s, a) \exp\left(-\frac{V_{k-1}^{\text{rob}}(s')}{\tau}\right) \right] \right\}
+V_{k}^{\text{rob}}(s) = \max_{a \in \mathcal{A}} \left\lbrace r(s, a) + \gamma \sup_{\tau \ge 0} \left[ -\tau \kappa - \tau \ln \sum_{s'} P(s' \mid s, a) \exp\left(-\frac{V_{k-1}^{\text{rob}}(s')}{\tau}\right) \right] \right\rbrace
 $$
+
