@@ -61,7 +61,7 @@ The default run uses a deterministic full-tree / full-matrix calculation. It sho
 
 ## the game: six little deals and a surprising amount of strategy
 
-Chance deals two distinct cards from $ \{J,Q,K\} $, so there are six equiprobable ordered deals. Player 0 sees $c_0$, acts first, and player 1 sees only $c_1$.
+Chance deals two distinct cards from $ \lbrace J,Q,K \rbrace $, so there are six equiprobable ordered deals. Player 0 sees $c_0$, acts first, and player 1 sees only $c_1$.
 
 - $P$: pass / check
 - $B$: bet
@@ -266,7 +266,7 @@ For this entropy-regularized matrix game, each best-response part of $G_\tau$ ha
 
 ## immd: keep the regularizer, move the magnet
 
-Annealing $\tau$ toward zero changes the problem every step. It can be a useful continuation heuristic, but it does not inherit a fixed-$\tau$ convergence theorem just because the curve is aesthetically pleasing.
+Annealing $\tau$ toward zero changes the problem every step. It can be a useful continuation heuristic, but it does not inherit a fixed- $\tau$ convergence theorem just because the curve is aesthetically pleasing.
 
 IMMD takes a cleaner route. At outer round $r$, it approximately solves the fixed-magnet inner game, checks its residual, then copies that solution into the next magnet:
 
@@ -304,11 +304,14 @@ This is not an information projection plot. Normal-form entropy, behavioral entr
 
 Running the script executes these checks before it writes a figure:
 
-- all $64\times64$ pure-policy payoffs use the six legal ordered deals and correct terminal stakes;
-- four known analytical equilibria have value $-1/18$ and machine-zero NashConv;
-- normal-form evaluation matches direct behavioral-tree evaluation on four random policy pairs;
-- MMD distributions remain normalized and all monitored gaps remain finite.
-- the default render configuration is gated by (G_\tau<10^{-5}), a final inner residual below (10^{-8}), and IMMD NashConv below (10^{-3}).
+* all $64 \times 64$ pure-policy payoffs use the six legal ordered deals and correct terminal stakes;
+* four known analytical equilibria have value $-1 / 18$ and machine-zero NashConv;
+* normal-form evaluation matches direct behavioral-tree evaluation on four random policy pairs;
+* MMD distributions remain normalized and all monitored gaps remain finite;
+* the default render configuration is gated by $G_{\tau} < 10^{-5}$, a final inner residual below $10^{-8}$, and IMMD NashConv below $10^{-3}$.
+
+The generated run then exposes, rather than hides, the important numerical state: CFR+ average NashConv, fixed-QRE residual, and final IMMD NashConv. No run needs to be trusted merely because it made a nice chart.
+
 
 The generated run then exposes, rather than hides, the important numerical state: CFR+ average NashConv, fixed-QRE residual, and final IMMD NashConv. No run needs to be trusted merely because it made a nice chart.
 
