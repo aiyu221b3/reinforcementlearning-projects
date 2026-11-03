@@ -1,6 +1,6 @@
 # reinforcementlearning-projects
 
-This repo is my workbench for reinforcement learning and game theory, with everything built from scratch! I don’t trust what I can’t open up, so the code is written to be inspected: invariants get checked, claims get verified wherever they can be, and every result gets plotted in dark mode. 
+This repo is my workbench for reinforcement learning and game theory, with everything built from scratch! Every result gets plotted in dark mode, hehe.
 
 It’s a work in progress, and it comes in two forms:
 
