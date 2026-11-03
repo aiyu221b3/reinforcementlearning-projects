@@ -52,3 +52,27 @@ $$
 V_{k}^{\text{rob}}(s) = \max_{a \in \mathcal{A}} \left\lbrace r(s, a) + \gamma \sup_{\tau \ge 0} \left[ -\tau \kappa - \tau \ln \sum_{s'} P(s' \mid s, a) \exp\left(-\frac{V_{k-1}^{\text{rob}}(s')}{\tau}\right) \right] \right\rbrace
 $$
 
+---
+
+---
+
+### 5. Partially Observed Artifact Search & Self-Play Q-Learning (`marl_search_game.py`)
+
+![fig_5](images/marl_search_game_analysis.png)
+
+Trains a two-agent pursuit–evasion search game in a voxel-style obstructed arena. The **artifact runner** learns to recover the beacon while the partially informed **signal hunter** learns to intercept using only its position and the runner’s last observation inside a local sensing radius. The single dark-mode phase portrait combines self-play terminal frequencies, greedy-policy occupancy heatmaps, and early-versus-late policy compression, while verifying that recovery, interception, and timeout probabilities sum to $100\%$ in every reporting window.
+
+$$
+Q_i(o_t^i, a_t^i)
+\leftarrow
+(1 - \alpha) Q_i(o_t^i, a_t^i)
++
+\alpha
+\left[
+r_t^i
++
+\gamma (1 - d_t)
+\max_{a' \in \mathcal{A}_i}
+Q_i(o_{t+1}^i, a')
+\right].
+$$
