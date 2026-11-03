@@ -1,6 +1,6 @@
 # ml-rl-minis
 
-This repository is currently under progress—a surgical lab of from-scratch reinforcement learning and game-theoretic primitives. Everything here is built around exact mechanism verification, analytical invariant checks, and dark-mode phase portraits.
+This repository is currently under progress: a lab of from-scratch reinforcement learning and game-theoretic primitives. Everything here is built around exact mechanism verification, analytical invariant checks, and dark-mode phase portraits.
 
 There are two main categories of projects:
 1. **Tutorials** — multi-file deep dives housed in their own dedicated folders.
