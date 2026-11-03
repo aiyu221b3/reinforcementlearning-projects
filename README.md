@@ -12,6 +12,7 @@ It’s a work in progress, and it comes in two forms:
 # Gallery
 
 ### 1. Recursive Belief-Based Learning (ReBeL) & Public Belief States
+*Hidden cards turn into a smooth surface you can walk around on, and the kink lands exactly where the math says it should.*
 ![fig_1](images/rebel_pubbel_cfr.png)
 
 Converts an imperfect-information extensive-form game into a continuous-state perfect-information game over the **Public Belief State (PBS)** simplex. Conditioning subgame solving on public posterior reach probabilities $\beta(c_i \mid h_{\text{pub}})$ maps out the exact piecewise-linear convex counterfactual value surface, verifying the indifference kink at $\beta^\star(\text{J} \mid \text{bet}) = \frac{1}{4}$ and the exact minimax root value $v^\star = -\frac{1}{18}$.
