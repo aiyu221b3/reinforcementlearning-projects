@@ -1,11 +1,11 @@
 # reinforcementlearning-projects
 
-This repository is a work in progress: a collection of reinforcement learning and game-theory experiments built from scratch. The focus is on making the mechanics inspectable—checking invariants, verifying claims where possible, and plotting the results in dark mode.
+This repo is my workbench for reinforcement learning and game theory, with everything built from scratch! I don’t trust what I can’t open up, so the code is written to be inspected: invariants get checked, claims get verified wherever they can be, and every result gets plotted in dark mode. 
 
-There are two kinds of projects here:
+It’s a work in progress, and it comes in two forms:
 
-1. **Tutorials** — multi-file deep dives in their own folders.
-2. **Single-file projects** — self-contained scripts in the root directory, each implementing and checking one idea from first principles.
+1. Tutorials: multi-file deep dives, each in its own folder.
+2. Single-file projects: self-contained scripts in the root. Each one takes a single idea, rebuilds it from first principles, and then checks that it actually holds.
 
 ---
 
