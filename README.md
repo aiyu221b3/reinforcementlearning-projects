@@ -13,7 +13,7 @@ There are two main categories of projects:
 ### 1. Recursive Belief-Based Learning (ReBeL) & Public Belief States
 ![fig_1](images/rebel_pubbel_cfr.png)
 
-Converts an imperfect-information extensive-form game into a continuous-state perfect-information game over the **Public Belief State (PBS)** simplex. Conditioning subgame solving on public posterior reach probabilities $\beta(c_i \mid h_{\text{pub}})$ maps out the exact piecewise-linear convex counterfactual value surface, verifying the indifference kink at $\beta^*(\text{J} \mid \text{bet}) = \frac{1}{4}$ and the exact minimax root value $v^* = -\frac{1}{18}$.
+Converts an imperfect-information extensive-form game into a continuous-state perfect-information game over the **Public Belief State (PBS)** simplex. Conditioning subgame solving on public posterior reach probabilities $\beta(c_i \mid h_{\text{pub}})$ maps out the exact piecewise-linear convex counterfactual value surface, verifying the indifference kink at $\beta^\star(\text{J} \mid \text{bet}) = \frac{1}{4}$ and the exact minimax root value $v^\star = -\frac{1}{18}$.
 
 $$
 V_i(c_i \mid \beta_{\text{pub}}) = \sum_{c_{-i}} P(c_{-i} \mid c_i, \beta_{\text{pub}}) u_i(\pi_{\text{sub}}^*(\beta_{\text{pub}}); c_i, c_{-i})
