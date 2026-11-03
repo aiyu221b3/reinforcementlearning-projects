@@ -1,2 +1,5 @@
-This will have really small projects which implement various algorithms/fun small one file practices.
-Yep, the names might not make sense. T-T This is more of a blooper repo.
+This repository is currently under progress. There are a few demonstrated projects which will have figures showcased below. 
+There are two main categories of projects: 1. Tutorials, 2. Single-file projects.
+Tutorials are present in folders, and rest in single-files.
+
+# Gallery:
