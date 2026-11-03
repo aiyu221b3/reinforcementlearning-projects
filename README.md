@@ -27,7 +27,7 @@ $$
 Traces the smooth Quantal Response Equilibrium continuum from the high-entropy uniform centroid ($\tau \to \infty$) down to the unique **Limiting Logit Equilibrium** ($\tau \to 0^+$) on the 2-simplex via damped Newton-Raphson predictor-corrector continuation. Verifies the theoretical exploitability scaling bound $\text{NashConv}(\pi^*(\tau)) = \mathcal{O}(\tau \ln |\mathcal{A}|)$ along the entire logit branch.
 
 $$
-\pi_i^*(a \mid \tau) = \frac{\exp(Q_i^{\pi^*}(a) / \tau)}{\sum_{a' \in \mathcal{A}_i} \exp(Q_i^{\pi^*}(a') / \tau)}
+\pi_{i}^{\star}(a \mid \tau) = \frac{\exp\left(Q_{i}^{\pi^{\star}}(a) / \tau\right)}{\sum_{a' \in \mathcal{A}_{i}} \exp\left(Q_{i}^{\pi^{\star}}(a') / \tau\right)}
 $$
 
 ---
