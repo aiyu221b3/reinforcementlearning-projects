@@ -1,10 +1,11 @@
 # reinforcementlearning-projects
 
-This repository is currently under progress: a lab of from-scratch reinforcement learning and game-theoretic primitives. Everything here is built around exact mechanism verification, analytical invariant checks, and dark-mode phase portraits.
+This repository is a work in progress: a collection of reinforcement learning and game-theory experiments built from scratch. The focus is on making the mechanics inspectable—checking invariants, verifying claims where possible, and plotting the results in dark mode.
 
-There are two main categories of projects:
-1. **Tutorials** — multi-file deep dives housed in their own dedicated folders.
-2. **Single-file projects** — self-contained, zero-fluff scripts in the root directory that implement and verify a specific algorithm from first principles.
+There are two kinds of projects here:
+
+1. **Tutorials** — multi-file deep dives in their own folders.
+2. **Single-file projects** — self-contained scripts in the root directory, each implementing and checking one idea from first principles.
 
 ---
 
